@@ -34,10 +34,11 @@ ahhh <- likert(dataset2)
 # Bar chart for gender and mental health ratings
 
 ggplot(data = dataset2) +
-  geom_col(mapping = aes(x = `how would you rate your health`, 
-      y = gender, fill = gender)) +
+  geom_col(mapping = aes(x = `how would you rate your health`, y = gender, 
+                         fill = gender)) +
   labs(title = "Mental Health Rating by Gender", x = "Level",
-       y = "Gender") +
+       y = "Amount of Responses") +
+  coord_flip() +
   scale_fill_brewer(palette = "Paired")
 
 # Separated by Gender- how many responses in each "Rate of Health" level
