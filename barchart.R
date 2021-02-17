@@ -33,19 +33,6 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 
-# Separated by Gender- how many responses in each "Rate of Health" level(chart 1)
-
-colors <- c(rep("red",1), rep("orange",1), rep("yellow",1), rep("green",1), 
-rep("blue",1),
-rep("black",2), rep("red",1), rep("orange",1), rep("yellow",1), rep("green",1),
-rep("blue",1), rep("black",3))
-
-ggplot(data = dataset2, mapping = aes(x = `how would you rate your health`)) + 
-  geom_histogram(binwidth = 1, stat = "count",
-                 color = "white", fill = colors) +
-  labs(x = "Rate of Health", y = "Number of men or women") +
-  facet_wrap(~gender, labeller = "label_both") 
-
 
 # Stacked Bar Chart x Comparison of 4 Questions (Chart 2)
 
@@ -60,4 +47,3 @@ data_items %>%
   ggplot(aes(x = Questions,)) +
   geom_bar(aes(fill = Responses), position = "fill") -> interactions
 interactions + scale_fill_brewer(palette = "Spectral") 
-
