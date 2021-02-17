@@ -13,7 +13,21 @@ names(dataset)[names(dataset) == "SOC5"] <- "in the past 7 days have you felt an
 names(dataset)[names(dataset) == "GENDER"] <- "gender"
 names(dataset)[names(dataset) == "RACETH"] <- "race"
 names(dataset)[names(dataset) == "HHSIZE1"] <- "household size"
-
-
+names(dataset2)[names(dataset2) == "household size"] <- "household_size"
 dataset2 <- dataset %>%  select(`how much do you trust your neighborhood`:`how would you rate your health`, gender , race, RACE_R2 , EDUCATION, `household size`)
+
+response1 <- c('All', 'Most', 'Some', 'None', 'Basically everyday')
+response2_5 <- c('A few times a week','A few times a month','Once a month', 'Not at all', 'Not sure')
+response6_7 <- c('Yes', 'No')
+response8 <- c('Excellent' , 'Very good', 'Good', 'Fair', 'Poor')
+response9 <- c('Male', 'Female')
+response10_11 <- c('White non-hispanic', )
+
+
+for(i in seq_along(dataset2)) {
+  dataset2[,i] <- factor(dataset2[,i], levels=response1)
+}
+
+ahhh <- likert(dataset2)
+
 
