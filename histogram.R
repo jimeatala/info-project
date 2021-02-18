@@ -1,3 +1,5 @@
+# Histogram of Mental Health Ratings/Amount of Responses seperated by Gender----
+
 dataset <- read.csv("https://query.data.world/s/x7qrjzoufcjzx6agzg5d6omncpzup7", header=TRUE, stringsAsFactors=FALSE)
 library("dplyr")
 colnames(dataset)
@@ -17,31 +19,38 @@ names(dataset2)[names(dataset2) == "household size"] <- "household_size"
 
 dataset2 <- dataset %>%  select(`how much do you trust your neighborhood`:`how would you rate your health`, gender , race, RACE_R2 , EDUCATION, `household size`)
 
-response1 <- c('All', 'Most', 'Some', 'None', 'Basically everyday')
-response2_5 <- c('A few times a week','A few times a month','Once a month', 'Not at all', 'Not sure')
-response6_7 <- c('Yes', 'No')
-response8 <- c('Excellent' , 'Very good', 'Good', 'Fair', 'Poor')
-response9 <- c('Male', 'Female')
-response10_11 <- c('White non-hispanic', )
-
-
-for(i in seq_along(dataset2)) {
-  dataset2[,i] <- factor(dataset2[,i], levels=response1)
-}
 library(tidyr)
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
 
-# Separated by Gender- how many responses in each "Rate of Health" level(chart 1)
+# Start of the histogram (run everything before in the right order first)
 
-colors <- c(rep("red",1), rep("orange",1), rep("yellow",1), rep("green",1), 
-            rep("blue",1),
-            rep("black",2), rep("red",1), rep("orange",1), rep("yellow",1), rep("green",1),
-            rep("blue",1), rep("black",3))
+dataset3 <- dataset2 %>%
+  select(`how would you rate your health`, gender) %>%
+  filter(`how would you rate your health` != "(98) SKIPPED ON WEB") %>%
+  filter(gender != "(98) SKIPPED ON WEB") %>%
+  filter(`how would you rate your health` != "(77) DON'T KNOW")
 
-ggplot(data = dataset2, mapping = aes(x = `how would you rate your health`)) + 
-  geom_histogram(binwidth = 1, stat = "count",
-                 color = "white", fill = colors) +
-  labs(x = "Rate of Health", y = "Number of men or women") +
+dataset3$`how would you rate your health` <- as.character(dataset3$`how would you rate your health`)
+dataset3[dataset3 == "(1) Excellent"] <- "Excellent"
+dataset3[dataset3 == "(2) Very good"] <- "Very Good"
+dataset3[dataset3 == "(3) Good"] <- "Good"
+dataset3[dataset3 == "(4) Fair"] <- "Fair"
+dataset3[dataset3 == "(5) Poor"] <- "Poor"
+dataset3$`how would you rate your health` <- as.factor(dataset3$`how would you rate your health`)
+
+names(dataset3)[names(dataset3) == "how would you rate your health"] <- "Mental Health Rating"
+
+ggplot(data = dataset3, mapping = aes(x = `Mental Health Rating`, fill = `Mental Health Rating`)) + 
+  geom_histogram(binwidth = 1, stat = "count") +
+  labs(x = "Level of Mental Health", y = "Amount of Responses") +
   facet_wrap(~gender, labeller = "label_both") 
+
+
+
+
+
+
+
+
