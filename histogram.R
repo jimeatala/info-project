@@ -22,7 +22,7 @@ dataset2 <- dataset %>%  select(`how much do you trust your neighborhood`:`how w
 library(tidyr)
 library(tidyverse)
 library(dplyr)
-library(ggplot2)
+library(ggplot2) ''
 
 # Start of the histogram (run everything before in the right order first)
 
