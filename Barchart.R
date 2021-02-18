@@ -87,7 +87,8 @@ names(dataset3)[names(dataset3) == "talk with neighbor in month"] <- "1"
 names(dataset3)[names(dataset3) == "talk with neighbor in month before covid"] <- "2"
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friends"] <- "3"
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friend before covid"] <- "4"
-=======
+
+------
 library(tidyr)
 library(tidyverse)
 library(dplyr)
@@ -119,8 +120,3 @@ ggplot(data = dataset3, mapping = aes(x = `Mental Health Rating`, fill = `Mental
 
 
 
-
-
-
-
->>>>>>> b44cf0a145ec4968db0a031d207eb75972303f30:histogram.R
