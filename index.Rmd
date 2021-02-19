@@ -11,11 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Introduction 
 
-This is the start of the introduction! Paste the neccessary information from
-the project proposal!!
-
+We are researching the mental health statistics due to COVID-19 because of the current situation we are living in. This dataset has given us unique questions that allow us to see how people are reacting to the Covid pandemic during their daily life. From measuring the amount of time people communicate with their family/friends, rating one’s mental health from excellent to poor, and using their gender as a means of comparison this data gives us an insight on how Covid-19 has impacted our mental health. Now more than ever are we more aware of taking care of one's mental health and we can use this data to better understand Covid’s affect on individuals. 
 
 ### Summary Information
+
+From our 3 charts we are able to gather a lot of information about the mental health impact of Covid on the sample population. We see from the “how often do you keep in touch with friends/family” question that people began communicating with their friends/family more once covid began. The “basically everyday” column increased by about 10-15 people during the covid months This shows that people began to seek for interactions with people during covid because they were often isolated and in need of someone to communicate with. We see this same trend with neighbors but to a lesser extent. Each column from “basically everyday” to “not sure” increases by about 1-5 people during Covid. We can also see the mental health of male and female. The majority of men felt “very good” and “good”, while about 270 said they felt “fair”. Women also had a majority say they felt “very good” and “good” and around 470 said they felt “fair. The final chart shows us the mental health rating compared by genders. It shows that overall females felt much better during pandemic than men when comparing all the options. All these data informations are helpful when studying which type of people have been affected the most by Covid-19
 
 ### Table of aggregated data? do we even have to put this one here? check
 
