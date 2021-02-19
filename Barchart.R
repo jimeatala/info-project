@@ -2,10 +2,12 @@
 
 dataset <- read.csv("https://query.data.world/s/x7qrjzoufcjzx6agzg5d6omncpzup7", header=TRUE, stringsAsFactors=FALSE)
 library("dplyr")
+
 library("ggplot2")
 library("tidyverse")
 
 
+library("ggplot2")
 colnames(dataset)
 names(dataset)[names(dataset) == "SOC1"] <- "how much do you trust your neighborhood"
 names(dataset)[names(dataset) == "SOC2A"] <- "talk with neighbor in month"
@@ -22,7 +24,7 @@ names(dataset)[names(dataset) == "HHSIZE1"] <- "household size"
 names(dataset2)[names(dataset2) == "household size"] <- "household_size"
 dataset2 <- dataset %>%  select(`how much do you trust your neighborhood`:`how would you rate your health`, gender , race, RACE_R2 , EDUCATION, `household size`, P_GEO)
 
-<<<<<<< HEAD:Barchart.R
+ HEAD:Barchart.R
 response1 <- c('All', 'Most', 'Some', 'None', 'Basically everyday')
 response2_5 <- c('A few times a week','A few times a month','Once a month', 'Not at all', 'Not sure')
 response6_7 <- c('Yes', 'No')
@@ -67,9 +69,17 @@ data_items <- dataset3 %>%
 data_items %>%  
   gather(key = Questions, value = Responses) %>% 
   mutate(Responses = factor(Responses)) %>% 
-  ggplot(aes(x = Questions)) +
+  ggplot(aes(x = Questions)) + 
   geom_bar(aes(fill = Responses), position = "fill") -> interactions
 interactions + scale_fill_brewer(palette = "Spectral")
+
+label <- c("talk with neighbor in month" , "talk with neighbor in month before covid", "how often did you stay in touch with family/friends" , "how often did you stay in touch with family/friend before covid")
+legend("bottomright", inset = .05 , title("Key") , label)
+
+
+
+#legend("bottomright",
+#legend = questions , cex = 2.3, title = "Key", fill = colors)
 
 dataset3 <- dataset2 %>% 
   select( `talk with neighbor in month` : `how often did you stay in touch with family/friend before covid`)
@@ -87,6 +97,11 @@ names(dataset3)[names(dataset3) == "talk with neighbor in month"] <- "1"
 names(dataset3)[names(dataset3) == "talk with neighbor in month before covid"] <- "2"
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friends"] <- "3"
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friend before covid"] <- "4"
+
+
+
+
+
 
 ------
 library(tidyr)
