@@ -7,19 +7,32 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Exploratory Analysis
+## **Exploratory Analysis**
 
-### Introduction 
+### **Introduction** 
 
 We are researching the mental health statistics due to COVID-19 because of the current situation we are living in. This dataset has given us unique questions that allow us to see how people are reacting to the Covid pandemic during their daily life. From measuring the amount of time people communicate with their family/friends, rating one’s mental health from excellent to poor, and using their gender as a means of comparison this data gives us an insight on how Covid-19 has impacted our mental health. Now more than ever are we more aware of taking care of one's mental health and we can use this data to better understand Covid’s affect on individuals. 
 
-### Summary Information
+### **Summary Information Script**
 
-From our 3 charts we are able to gather a lot of information about the mental health impact of Covid on the sample population. We see from the “how often do you keep in touch with friends/family” question that people began communicating with their friends/family more once covid began. The “basically everyday” column increased by about 10-15 people during the covid months This shows that people began to seek for interactions with people during covid because they were often isolated and in need of someone to communicate with. We see this same trend with neighbors but to a lesser extent. Each column from “basically everyday” to “not sure” increases by about 1-5 people during Covid. We can also see the mental health of male and female. The majority of men felt “very good” and “good”, while about 270 said they felt “fair”. Women also had a majority say they felt “very good” and “good” and around 470 said they felt “fair. The final chart shows us the mental health rating compared by genders. It shows that overall females felt much better during pandemic than men when comparing all the options. All these data informations are helpful when studying which type of people have been affected the most by Covid-19
+```{r, eval=FALSE}
 
-### Table of aggregated data? do we even have to put this one here? check
+```
+From our 3 charts we are able to gather a lot of information about the mental health impact of COVID-19 on the sample population. We see from the “how often
+do you keep in touch with friends/family” question that people began
+communicating with their friends/family more once COVID began. The “basically everyday” column increased by about 10-15 people during the COVID months This shows that people began to seek for interactions with people during COVID
+because they were often isolated and in need of someone to communicate with. We see this same trend with neighbors but to a lesser extent. Each column from “basically everyday” to “not sure” increases by about 1-5 people during COVID.
+We can also see the mental health of male and female. The majority of men felt “Very Good” and “Good”, while about 270 said they felt “Fair”. Women also had a majority say they felt “Very Good” and “Good” and around 470 said they felt
+“Fair". The final chart shows us the mental health rating compared by genders.
+It shows that overall females felt much better during pandemic than men when comparing all the options. All this data is helpful when studying which type of people have been affected the most by COVID-19.
 
-### First Chart
+### **Table of Aggregated Data**
+
+```{r, eval=FALSE}
+
+```
+
+### **First Chart:** _Histogram of Mental Health Ratings by Gender_
 
 ```{r, echo = FALSE, include = F, warning = FALSE}
 library(ggplot2)
@@ -60,7 +73,17 @@ ggplot(data = dataset3, mapping = aes(x = `Mental Health Rating`, fill = `Mental
   facet_wrap(~gender, labeller = "label_both") 
 ```
 
-### Second Chart!
+We decided to include this chart to see and showcase the similarities between
+each gender and their personal _ratings for their mental health_. This histogram
+is organized and clear in a manner that reflects a pattern of a high number of `“Very Good”` and `“Good”` ratings across both males and females. The
+**purpose** of this chart is to break down the data set from one question to gather insight about how males and females have viewed their level of mental health. Some **notable** observations and insights from the chart include the evidence of how most males and females rated their level of mental health as
+`“Very Good”`. The histogram is color-coded to more clearly highlight each
+possible response and the number of those responses in the data that clearly
+show the same order of the number of responses. For both males and females, the highest number of responses were under `“Very Good”`, then continued in the order
+of `“Good”`, `“Excellent”`, `“Fair”` and then both having the lowest number of
+responses for `“Poor”`.
+
+### **Second Chart:** Stacked Bar Chart of ___
 
 
-### Third Chart
+### **Third Chart:** Map?
