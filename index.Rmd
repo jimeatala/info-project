@@ -78,7 +78,7 @@ show the same order of the number of responses. For both males and females, the 
 of `“Good”`, `“Excellent”`, `“Fair”` and then both having the lowest number of
 responses for `“Poor”`.
 
-### **Second Chart:** Stacked Bar Chart of ___
+### **Second Chart:** Stacked Bar Chart of How Often People Communicated
 
 ```{r, include= FALSE}
 
@@ -123,5 +123,10 @@ data_items %>%
   geom_bar(aes(fill = Responses), position = "fill") -> interactions
 interactions + scale_fill_brewer(palette = "Spectral")
 ```
+
+
+In this chart we are comparing people’s responses on how often they talked to their neighbors before and during COVID-19. Row 1 asked the question “How often did you talk to your neighbors?” Row 2 asks “How often did you talk to your neighbors during COVID-19?”. Row 3 asks “How often did you stay in touch with your family and friends during quarantine?” and row 4 asks “How often did you stay in touch with your family and friends BEFORE COVID-19?” We thought it was important to include this data because it demonstrates how more people reached out to their friends and family when the pandemic started.
+
+An interesting observation we made was that when people talked to their family and friends “Basically every day” compared to the people who only talked to their family and friends “A few times a week”. Another observation is there was hardly any change with how often people communicated with their neighbors before or during quarantine.
 
 ### **Third Chart:** 
