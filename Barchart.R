@@ -76,8 +76,6 @@ interactions + scale_fill_brewer(palette = "Spectral")
 label <- c("talk with neighbor in month" , "talk with neighbor in month before covid", "how often did you stay in touch with family/friends" , "how often did you stay in touch with family/friend before covid")
 legend("bottomright", inset = .05 , title("Key") , label)
 
-
-
 #legend("bottomright",
 #legend = questions , cex = 2.3, title = "Key", fill = colors)
 
