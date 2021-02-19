@@ -17,30 +17,6 @@ We are researching the mental health statistics due to COVID-19 because of the c
 
 From our 3 charts we are able to gather a lot of information about the mental health impact of Covid on the sample population. We see from the question “how do you rate year health” 417 people that live by themselves said they felt excellent. That is a low number compared to the rest of the population, because we know that living by yourself leads to more loneliness. From our chart we were also able to compare the amount of men and women that said they felt “excellent” during the pandemic 838 females said they felt excellent while only 642 males said they felt excellent. We can see from this data and other health statistics that males often have more depression compared to women. One other observation we made from our data was the increase in the number of people that communicated with their friends and family once covid began. Before covid 4,163 people said they communicated with friends and family “basically every day”, but when covid began 4,940 people said they talked with their family/ friend everyday. We see that people were more likely to communicate with their friends and family once Covid began.
 
-One_person_excellent <- chart3 %>% 
-  filter(`how would you rate your health` == "(1) Excellent") %>% 
-  filter(`household size` == "(1) One person, I live by myself") %>% 
-  summarise(`household size`,`how would you rate your health`)
-  nrow(One_person_excellent)
-  
-num_female_Excellent <- dataset2 %>% 
-    filter(gender == "(2) Female") %>% 
-    filter(`how would you rate your health` == "(1) Excellent") 
-  nrow(num_female_Excellent)  
-  
-  num_male_Excellent <- dataset2 %>% 
-    filter(gender == "(1) Male") %>% 
-    filter(`how would you rate your health` == "(1) Excellent") 
-  nrow(num_male_Excellent) 
-  
-  Contant_before_covid <- dataset2 %>% 
-    filter(`how often did you stay in touch with family/friend before covid` == "(1) Basically every day")
-  nrow(Contant_before_covid)
-  
-  Contact_with_family <- dataset2 %>% 
-    filter(`how often did you stay in touch with family/friends`== "(1) Basically every day")
-  nrow(Contact_with_family)
-
 ### **Table of Aggregated Data**
 
 
@@ -143,16 +119,10 @@ interactions + scale_fill_brewer(palette = "Spectral")
 ```
 
 
+
 In this chart we are comparing people’s responses on how often they talked to their neighbors before and during COVID-19. `Row 1` asked the question “How often did you talk to your neighbors?” `Row 2` asks “How often did you talk to your neighbors during COVID-19?”. `Row 3` asks “How often did you stay in touch with your family and friends during quarantine?” `Row 4` asks “How often did you stay in touch with your family and friends BEFORE COVID-19?” We thought it was important to include this data because it demonstrates how more people reached out to their friends and family when the pandemic started.
 
 An interesting observation we made was that when people talked to their family and friends `“Basically every day”` compared to the people who only talked to their family and friends `“A few times a week”`. Another observation is there was hardly any change with how often people communicated with their neighbors before or during quarantine.
 
 ### **Third Chart:** 
-chart3 <- dataset2 %>% 
-  filter(`how would you rate your health` !=  "(98) SKIPPED ON WEB") %>% 
-  filter(`household size` != "(99) REFUSED") %>% 
-  filter(`household size` != "(98) SKIPPED ON WEB")
-
-ggplot(data = chart3) +
-  geom_count(mapping = aes(x= `how would you rate your health`, y = `household size`))
 
