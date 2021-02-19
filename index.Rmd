@@ -9,23 +9,23 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Exploratory Analysis
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+### Introduction 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+This is the start of the introduction! Paste the neccessary information from
+the project proposal!!
 
-```{r cars}
-summary(cars)
-```
 
-## First Chart
+### Summary Information
 
-You can also embed plots, for example?:
+### Table of aggregated data? do we even have to put this one here? check
 
-```{r}
+### First Chart
+
+```{r, echo = FALSE, include = F, warning = FALSE}
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
-# Histogram of Mental Health Ratings/Amount of Responses seperated by Gender----
+# Histogram of Mental Health Ratings/Amount of Responses separated by Gender----
 
 dataset <- read.csv("https://query.data.world/s/x7qrjzoufcjzx6agzg5d6omncpzup7", header=TRUE, stringsAsFactors=FALSE)
 colnames(dataset)
@@ -33,6 +33,8 @@ names(dataset)[names(dataset) == "PHYS8"] <- "how would you rate your health"
 names(dataset)[names(dataset) == "GENDER"] <- "gender"
 
 dataset2 <- dataset %>%  select(`how would you rate your health`, gender)
+```
+```{r, echo =FALSE, warning = FALSE}
 
 # Start of the histogram (run everything before in the right order first)
 
@@ -58,4 +60,7 @@ ggplot(data = dataset3, mapping = aes(x = `Mental Health Rating`, fill = `Mental
   facet_wrap(~gender, labeller = "label_both") 
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### Second Chart!
+
+
+### Third Chart
