@@ -1,5 +1,5 @@
 ---
-title: "index.rmd"
+title: "COVID-19 Survey Analysis"
 output: html_document
 ---
 
