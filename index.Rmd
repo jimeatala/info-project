@@ -124,9 +124,21 @@ In this chart we are comparing people’s responses on how often they talked to 
 
 An interesting observation we made was that when people talked to their family and friends `“Basically every day”` compared to the people who only talked to their family and friends `“A few times a week”`. Another observation is there was hardly any change with how often people communicated with their neighbors before or during quarantine.
 
-
 ### **Third Chart:** 
 ```{r, echo = FALSE}
+
+names(dataset)[names(dataset) == "SOC1"] <- "how much do you trust your neighborhood"
+names(dataset)[names(dataset) == "SOC2A"] <- "talk with neighbor in month"
+names(dataset)[names(dataset) == "SOC2B"] <- "talk with neighbor in month before covid"
+names(dataset)[names(dataset) == "SOC3A"] <- "how often did you stay in touch with family/friends"
+names(dataset)[names(dataset) == "SOC3B"] <- "how often did you stay in touch with family/friend before covid"
+names(dataset)[names(dataset) == "SOC4A"] <- "did you volunteer this month"
+names(dataset)[names(dataset) == "SOC4B"] <- "how often did you volunteer per month before covid"
+names(dataset)[names(dataset) == "PHYS8"] <- "how would you rate your health"
+names(dataset)[names(dataset) == "SOC5"] <- "in the past 7 days have you felt anxious/depressed/lonely/hopeless"
+names(dataset)[names(dataset) == "GENDER"] <- "gender"
+names(dataset)[names(dataset) == "RACETH"] <- "race"
+names(dataset)[names(dataset) == "HHSIZE1"] <- "household size"
 
 New_data <- dataset %>%  select(`how much do you trust your neighborhood`:`how would you rate your health`, `household size`, gender, RACE_R2 , EDUCATION, P_GEO)
 
@@ -135,11 +147,30 @@ chart3 <- New_data %>%
   filter(`household size` != "(99) REFUSED") %>% 
   filter(`household size` != "(98) SKIPPED ON WEB")
 
+chart3$`how would you rate your health` <- as.character(chart3$`how would you rate your health`)
+chart3[chart3 == "(1) Excellent"] <- "Excellent"
+chart3[chart3 == "(2) Very good"] <- "Very Good"
+chart3[chart3 == "(3) Good"] <- "Good"
+chart3[chart3 == "(4) Fair"] <- "Fair"
+chart3[chart3 == "(5) Poor"] <- "Poor"
+chart3[chart3 == "(77) DON'T KNOW"] <- "Don't Know"
+chart3$`how would you rate your health` <- as.factor(chart3$`how would you rate your health`)
+
+chart3$`household size` <- as.character(chart3$`household size`)
+chart3[chart3 == "(1) One person, I live by myself"] <- "One person, I live by myself"
+chart3[chart3 == "(2) Two persons"] <- "Two persons"
+chart3[chart3 == "(3) Three persons"] <- "Three persons"
+chart3[chart3 == "(4) Four persons"] <- "Four persons"
+chart3[chart3 == "(5) Five persons"] <- "Five persons"
+chart3[chart3 == "(6) Six or more persons"] <- "Six or more persons"
+chart3$`household size` <- as.factor(chart3$`household size`)
+
 ggplot(data = chart3) +
   geom_count(mapping = aes(x= `how would you rate your health`, y = `household size`))
 
   
 ```
+
 In this scatterplot we are showing how people rated their health during Covid-19 compared to the amount of people that live in a household. The scatterplot shows that the bigger the bubble is the more people that are in the category. This chart is important because it shows how much having another person in your household affects the way you are feeling mentally.  Each bubble size is seperated by 250, 500, 750, and 1,000 people.
 
 From our observation the plot that had the most people was “Two Person” household and they felt “very good”. The column that shows us the most clear evidence of covid’s impact on people who live by themselves is the people who feel “poor” column. As the number of people in a household increases the less people say that they feel “poor”.  
