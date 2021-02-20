@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **Introduction** 
 
-We are researching the mental health statistics due to COVID-19 because of the current situation we are living in. This dataset has given us unique questions that allow us to see how people are reacting to the COVID pandemic during their daily life. From measuring the amount of time people communicate with their family/friends, rating one’s mental health from excellent to poor, and using their gender as a means of comparison this data gives us an insight on how COVID-19 has impacted our mental health. Now more than ever are we more aware of taking care of one's mental health and we can use this data to better understand Covid’s affect on individuals. 
+We are researching the mental health statistics due to COVID-19 because of the current situation we are living in. This dataset has given us unique questions that allow us to see how people are reacting to the COVID pandemic during their daily life. From measuring the amount of time people communicate with their family/friends, rating one’s mental health from excellent to poor, and using their gender as a means of comparison this data gives us an insight on how COVID-19 has impacted our mental health. Now more than ever are we more aware of taking care of one's mental health and we can use this data to better understand COVID’s affect on individuals. 
 
 ### **Summary Information Script**
 
@@ -69,6 +69,8 @@ dataset2 <- dataset %>%  select(`how much do you trust your neighborhood`:`how w
 ```{r, echo=FALSE}
 knitr::kable(tail(dataset2[, 2:9]))
 ```
+
+We decided to include this snippet of our filtered table to show the possible values and format that could appear with this certain dataset. This table displays the last few rows of the most important columns for our entire analysis. The information for each column represents an answer to the question in the column name. For example, the `household size` column contains rows of responses that list between `"One person, I live by myself"` all the way up to `"Six or more persons"`.
 
 ### **First Chart:** _Histogram of Mental Health Ratings by Gender_
 
