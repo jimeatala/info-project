@@ -2,10 +2,6 @@
 
 dataset <- read.csv("https://query.data.world/s/x7qrjzoufcjzx6agzg5d6omncpzup7", header=TRUE, stringsAsFactors=FALSE)
 library("dplyr")
-library("ggplot2")
-library("tidyverse")
-install.packages("knitr")
-library(knitr)
 
 colnames(dataset)
 names(dataset)[names(dataset) == "SOC1"] <- "how much do you trust your neighborhood"
@@ -19,8 +15,7 @@ names(dataset)[names(dataset) == "PHYS8"] <- "how would you rate your health"
 names(dataset)[names(dataset) == "SOC5"] <- "in the past 7 days have you felt anxious/depressed/lonely/hopeless"
 names(dataset)[names(dataset) == "HHSIZE1"] <- "household size"
 names(dataset2)[names(dataset2) == "household size"] <- "household_size"
-dataset2 <- dataset %>%  select(`how much do you trust your neighborhood`:`how would you rate your health`, gender , race, RACE_R2 , EDUCATION, `household size`, P_GEO)
+dataset2 <- dataset %>%  select(`how much do you trust your neighborhood`:`how would you rate your health`,`household size`)
 
-table <- knitr::kable(dataset2)
-kable(table)
+table <- knitr::kable(tail(dataset[, 2:9]))
 
