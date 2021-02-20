@@ -4,6 +4,30 @@ library("ggplot2")
 library("tidyverse")
 
 
+One_person_excellent <- chart3 %>% 
+  filter(`how would you rate your health` == "(1) Excellent") %>% 
+  filter(`household size` == "(1) One person, I live by myself") %>% 
+  summarise(`household size`,`how would you rate your health`)
+nrow(One_person_excellent)
+
+num_female_Excellent <- dataset2 %>% 
+  filter(gender == "(2) Female") %>% 
+  filter(`how would you rate your health` == "(1) Excellent") 
+nrow(num_female_Excellent)  
+
+num_male_Excellent <- dataset2 %>% 
+  filter(gender == "(1) Male") %>% 
+  filter(`how would you rate your health` == "(1) Excellent") 
+nrow(num_male_Excellent) 
+
+Contant_before_covid <- dataset2 %>% 
+  filter(`how often did you stay in touch with family/friend before covid` == "(1) Basically every day")
+nrow(Contant_before_covid)
+
+Contact_with_family <- dataset2 %>% 
+  filter(`how often did you stay in touch with family/friends`== "(1) Basically every day")
+nrow(Contact_with_family)
+
 colnames(dataset)
 names(dataset)[names(dataset) == "SOC1"] <- "how much do you trust your neighborhood"
 names(dataset)[names(dataset) == "SOC2A"] <- "talk with neighbor in month"
@@ -84,3 +108,11 @@ names(dataset3)[names(dataset3) == "talk with neighbor in month"] <- "1"
 names(dataset3)[names(dataset3) == "talk with neighbor in month before covid"] <- "2"
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friends"] <- "3"
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friend before covid"] <- "4"
+
+chart3 <- dataset2 %>% 
+  filter(`how would you rate your health` !=  "(98) SKIPPED ON WEB") %>% 
+  filter(`household size` != "(99) REFUSED") %>% 
+  filter(`household size` != "(98) SKIPPED ON WEB")
+
+ggplot(data = chart3) +
+  geom_count(mapping = aes(x= `how would you rate your health`, y = `household size`))
