@@ -1,0 +1,98 @@
+---
+title: "COVID-19 Survey Analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+```
+
+## **Exploratory Analysis**
+
+### **Introduction** 
+
+We are researching the mental health statistics due to COVID-19 because of the current situation we are living in. This dataset has given us unique questions that allow us to see how people are reacting to the COVID pandemic during their daily life. From measuring the amount of time people communicate with their family/friends, rating one’s mental health from excellent to poor, and using their gender as a means of comparison this data gives us an insight on how COVID-19 has impacted our mental health. Now more than ever are we more aware of taking care of one's mental health and we can use this data to better understand COVID’s affect on individuals. 
+
+### **Summary Information Script**
+
+```{r, eval=FALSE}
+One_person_excellent <- chart3 %>% 
+  filter(`how would you rate your health` == "(1) Excellent") %>% 
+  filter(`household size` == "(1) One person, I live by myself") %>% 
+  summarise(`household size`,`how would you rate your health`)
+nrow(One_person_excellent)
+```
+```{r, eval=FALSE}
+num_female_Excellent <- dataset2 %>% 
+  filter(gender == "(2) Female") %>% 
+  filter(`how would you rate your health` == "(1) Excellent") 
+nrow(num_female_Excellent)  
+```
+```{r, eval=FALSE}
+num_male_Excellent <- dataset2 %>% 
+  filter(gender == "(1) Male") %>% 
+  filter(`how would you rate your health` == "(1) Excellent") 
+nrow(num_male_Excellent) 
+```
+```{r, eval=FALSE}
+Contant_before_covid <- dataset2 %>% 
+  filter(`how often did you stay in touch with family/friend before covid` == "(1) Basically every day")
+nrow(Contant_before_covid)
+```
+```{r, eval=FALSE}
+Contact_with_family <- dataset2 %>% 
+  filter(`how often did you stay in touch with family/friends`== "(1) Basically every day")
+nrow(Contact_with_family)
+```
+
+From our 3 charts we are able to gather a lot of information about the mental health impact of COVID on the sample population. We see from the question “how do you rate year health” 417 people that live by themselves said they felt excellent. That is a low number compared to the rest of the population, because we know that living by yourself leads to more loneliness. From our chart we were also able to compare the amount of men and women that said they felt “excellent” during the pandemic 838 females said they felt excellent while only 642 males said they felt excellent. We can see from this data and other health statistics that males often have more depression compared to women. One other observation we made from our data was the increase in the number of people that communicated with their friends and family once COVID began. Before COVID 4,163 people said they communicated with friends and family “basically every day”, but when COVID began 4,940 people said they talked with their family/ friend everyday. We see that people were more likely to communicate with their friends and family once COVID began.
+
+### **Table of Aggregated Data**
+
+```{r, echo = FALSE}
+source("table.R")
+knitr::kable(tail(dataset2))
+```
+
+We decided to include this snippet of our filtered table to show the possible values and format that could appear with this certain dataset. This table displays the last few rows of the most important columns for our entire analysis. The information for each column represents an answer to the question in the column name. For example, the `household size` column contains rows of responses that list between `"One person, I live by myself"` all the way up to `"Six or more persons"`.
+
+### **First Chart:** _Histogram of Mental Health Ratings by Gender_
+
+```{r, echo = FALSE, warning = FALSE}
+source("histogram.R")
+histogram
+```
+
+We decided to include this chart to see and showcase the similarities between
+each gender and their personal _ratings for their mental health_. This histogram
+is organized and clear in a manner that reflects a pattern of a high number of `“Very Good”` and `“Good”` ratings across both males and females. The
+**purpose** of this chart is to break down the data set from one question to gather insight about how males and females have viewed their level of mental health. Some **notable** observations and insights from the chart include the evidence of how most males and females rated their level of mental health as
+`“Very Good”`. The histogram is color-coded to more clearly highlight each
+possible response and the number of those responses in the data that clearly
+show the same order of the number of responses. For both males and females, the highest number of responses were under `“Very Good”`, then continued in the order
+of `“Good”`, `“Excellent”`, `“Fair”` and then both having the lowest number of
+responses for `“Poor”`.
+
+### **Second Chart:** _Stacked Bar Chart of How Often People Communicated_
+
+```{r, warning= FALSE, echo= FALSE}
+source("Barchart.R")
+bar
+```
+
+In this chart we are comparing people’s responses on how often they talked to their neighbors before and during COVID-19. `Row 1` asked the question “How often did you talk to your neighbors?” `Row 2` asks “How often did you talk to your neighbors during COVID-19?”. `Row 3` asks “How often did you stay in touch with your family and friends during quarantine?” `Row 4` asks “How often did you stay in touch with your family and friends BEFORE COVID-19?” We thought it was important to include this data because it demonstrates how more people reached out to their friends and family when the pandemic started.
+
+An interesting observation we made was that when people talked to their family and friends `“Basically every day”` compared to the people who only talked to their family and friends `“A few times a week”`. Another observation is there was hardly any change with how often people communicated with their neighbors before or during quarantine.
+
+### **Third Chart:** _Household Size and Mental Health Ratings_
+
+```{r, echo=FALSE}
+source("scatterplot.R")
+scatter
+```
+
+In this scatterplot we are showing how people rated their health during COVID-19 compared to the amount of people that live in a household. The scatterplot shows that the bigger the bubble is the more people that are in the category. This chart is important because it shows how much having another person in your household affects the way you are feeling mentally.  Each bubble size is separated by 250, 500, 750, and 1,000 people.
+
+From our observation the plot that had the most people was `“Two Persons”` household and they felt `“Very Good”`. The column that shows us the most clear evidence of COVID’s impact on people who live by themselves is the people who feel `“Poor”` column. As the number of people in a household increases the less people say that they feel `“Poor”`.  
