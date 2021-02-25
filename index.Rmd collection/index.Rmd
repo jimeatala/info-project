@@ -18,32 +18,34 @@ We are researching the mental health statistics due to COVID-19 because of the c
 ### **Summary Information Script**
 
 ```{r, eval=FALSE}
-One_person_excellent <- chart3 %>% 
-  filter(`how would you rate your health` == "(1) Excellent") %>% 
-  filter(`household size` == "(1) One person, I live by myself") %>% 
-  summarise(`household size`,`how would you rate your health`)
+One_person_excellent <- chart3 %>%
+  filter(`how would you rate your health` == "(1) Excellent") %>%
+  filter(`household size` == "(1) One person, I live by myself") %>%
+  summarise(`household size`, `how would you rate your health`)
 nrow(One_person_excellent)
 ```
 ```{r, eval=FALSE}
-num_female_Excellent <- dataset2 %>% 
-  filter(gender == "(2) Female") %>% 
-  filter(`how would you rate your health` == "(1) Excellent") 
-nrow(num_female_Excellent)  
+num_female_Excellent <- dataset2 %>%
+  filter(gender == "(2) Female") %>%
+  filter(`how would you rate your health` == "(1) Excellent")
+nrow(num_female_Excellent)
 ```
 ```{r, eval=FALSE}
-num_male_Excellent <- dataset2 %>% 
-  filter(gender == "(1) Male") %>% 
-  filter(`how would you rate your health` == "(1) Excellent") 
-nrow(num_male_Excellent) 
+num_male_Excellent <- dataset2 %>%
+  filter(gender == "(1) Male") %>%
+  filter(`how would you rate your health` == "(1) Excellent")
+nrow(num_male_Excellent)
 ```
 ```{r, eval=FALSE}
-Contant_before_covid <- dataset2 %>% 
-  filter(`how often did you stay in touch with family/friend before covid` == "(1) Basically every day")
+Contant_before_covid <- dataset2 %>%
+  filter(`how often did you stay in touch with family/friend before covid`
+         == "(1) Basically every day")
 nrow(Contant_before_covid)
 ```
 ```{r, eval=FALSE}
-Contact_with_family <- dataset2 %>% 
-  filter(`how often did you stay in touch with family/friends`== "(1) Basically every day")
+Contact_with_family <- dataset2 %>%
+  filter(`how often did you stay in touch with family/friends` ==
+           "(1) Basically every day")
 nrow(Contact_with_family)
 ```
 
